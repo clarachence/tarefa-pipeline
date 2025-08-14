@@ -1,9 +1,9 @@
-#🚀 Projeto: Pipeline de CI/CD da Calculadora
+#🚀 Projeto: Pipeline de CI/CD da Calculadora#
 Este projeto demonstra a implementação de um pipeline de Integração Contínua (CI) e Entrega Contínua (CD), automatizando o processo de testes e deploy para uma aplicação de calculadora simples.
 
 O objetivo é garantir que cada alteração no código seja validada automaticamente e, em seguida, publicada em um ambiente de produção (Vercel) de forma rápida e confiável.
 
-##📂 Estrutura do Projeto
+##📂 Estrutura do Projeto##
 A estrutura do diretório está organizada de forma clara para separar o código da aplicação, os testes e a configuração do pipeline:
 
 tarefa-pipeline/
@@ -18,19 +18,19 @@ tarefa-pipeline/
 ├── package.json               # Gerenciamento de dependências
 ├── package-lock.json
 └── README.md
-##⚙️ O Pipeline de CI/CD em Ação
+##⚙️ O Pipeline de CI/CD em Ação##
 O pipeline é orquestrado pelo GitHub Actions e é acionado a cada git push para a branch main.
 
 Ele executa os seguintes jobs em sequência:
 
-###1. Build e Testes (build)
+###1. Build e Testes (build)###
 Instalação: npm install para instalar todas as dependências.
 
 Execução de Testes: npm test para rodar os testes unitários da calculadora.js com o Jest.
 
 Status: Apenas se esta etapa for bem-sucedida, o pipeline prosseguirá para o deploy.
 
-###2. Deploy (deploy)
+###2. Deploy (deploy)###
 Pré-condição: Este job depende do sucesso do build.
 
 Publicação: Utiliza as credenciais seguras do Vercel (secrets) para publicar a aplicação.

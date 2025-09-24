@@ -41,12 +41,12 @@ jobs:
         if: success()
         uses: sleuth-io/sleuth-action@main
         with:
-          api-key: ${{ secrets.SLEUTH_API_KEY }}
+          api-key: ${{ secrets.SLEUTH_API_KEY_FINAL }}
           organization-slug: clarachence
           deployment-slug: production
           environment: production
           sha: ${{ github.sha }}
-          
+
     
 
  

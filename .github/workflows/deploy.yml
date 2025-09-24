@@ -38,8 +38,8 @@ jobs:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
       - name: Notify Sleuth
-  if: ${{ success() }}
-  uses: sleuth-io/sleuth-action@main
-  with:
-    api_key: ${{ secrets.SLEUTH_API_KEY }}
-    environment: production
+        if: success()
+        uses: sleuth-io/sleuth-action@main
+        with:
+          api_key: ${{ secrets.SLEUTH_API_KEY }}
+          environment: production

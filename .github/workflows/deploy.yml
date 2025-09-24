@@ -44,7 +44,7 @@ jobs:
           api-key: ${{ secrets.SLEUTH_API_KEY }}
           environment: production
           sha: ${{ github.sha }}
-          deployment-slug: clarachence-app/production
+          deployment_slug: clarachence-app/production
  
 
         

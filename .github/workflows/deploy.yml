@@ -38,14 +38,14 @@ jobs:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
       - name: Notify Sleuth
-      if: success()
-      uses: sleuth-io/sleuth-action@main
-      with:
-        api-key: ${{ secrets.SLEUTH_API_KEY }}
-        organization-slug: clarachence
-        deployment-slug: clarachence-app/production
-        environment: production
-        sha: ${{ github.sha }}
+        if: success()
+        uses: sleuth-io/sleuth-action@main
+        with:
+          api-key: ${{ secrets.SLEUTH_API_KEY }}
+          organization-slug: clarachence
+          deployment-slug: clarachence-app/production
+          environment: production
+          sha: ${{ github.sha }}
 
  
 

@@ -20,7 +20,7 @@ jobs:
       - name: Checkout (com histórico completo para métricas)
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Importante para o Sleuth calcular métricas de tempo
+          fetch-depth: 0
 
       - name: Install dependencies
         run: npm install
@@ -37,12 +37,15 @@ jobs:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
-      - name: Notify Sleuth
+      - name: Notify Sleuth via cURL (Solução para Erro 401)
         if: success()
-        uses: sleuth-io/sleuth-action@main
-        with:
-          api-key: ${{ secrets.SLEUTH_DEPLOY_TOKEN }}
-          organization-slug: clarachence
-          deployment-slug: production
-          environment: production
-          sha: ${{ github.sha }}
+        run: |
+          # 1. Define a URL de Registro de Deploy do seu projeto
+          SLEUTH_URL="https://app.sleuth.io/api/1/deployments/clarachence/tarefa-pipeline/register_deploy"
+          
+          # 2. Faz a chamada POST, garantindo que o token está no cabeçalho Authorization: Bearer
+          # Isso é exatamente o que a tela de tokens do Sleuth recomenda para autenticação!
+          curl -X POST "$SLEUTH_URL" \
+            -H "Authorization: Bearer ${{ secrets.SLEUTH_DEPLOY_TOKEN }}" \
+            -d "sha=${{ github.sha }}" \
+            -d "environment=production"

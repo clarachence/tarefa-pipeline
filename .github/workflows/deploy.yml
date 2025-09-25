@@ -20,7 +20,7 @@ jobs:
       - name: Checkout (com histórico completo para métricas)
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # Importante para o Sleuth calcular métricas de tempo
 
       - name: Install dependencies
         run: npm install
@@ -41,15 +41,8 @@ jobs:
         if: success()
         uses: sleuth-io/sleuth-action@main
         with:
-          api-key: ${{ secrets.SLEUTH_API_KEY_FINAL }}
+          api-key: ${{ secrets.SLEUTH_DEPLOY_TOKEN }}
           organization-slug: clarachence
           deployment-slug: production
           environment: production
           sha: ${{ github.sha }}
-          
-
-    
-
- 
-
-        
